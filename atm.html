@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>welcome to POLARIS BANK ATM</h1>
+    <p>Beware of scam</p>
+    <img src="polariz.jpg" alt="" />
+  </body>
+
+  <script>
+    let balance = 10000;
+    let pin = 1234;
+
+    alert(`your default pin is ${pin}`);
+    const userPin = prompt("enter pin");
+
+    let transaction = true;
+    while (transaction) {
+      const choice = Number(
+        prompt(
+          "Select an option:\n1. Check Balance\n2. Withdraw\n3. Recharge\n4. Exit"
+        )
+      );
+
+      switch (choice) {
+        case 1:
+          alert(`Your current balance is ${balance}`);
+          break;
+        case 2:
+          const withdraw = Number(
+            prompt("Enter the amount to withdraw:")
+          );
+
+          if (isNaN(withdraw) || withdraw <= 0) {
+            alert("Invalid amount, Please try again.");
+          } else if (withdraw > balance) {
+            alert("Insufficient funds.");
+          } else {
+            balance -= withdraw;
+            alert(`Withdrawal successful. Your new balance is ${balance}`);
+          }
+          break;
+        case 3:
+          const recharge = Number(
+            prompt("Enter the amount to recharge:")
+          );
+
+          if (isNaN(recharge) || recharge <= 0) {
+            alert("Invalid amount, Please try again.");
+          } else {
+            balance -= recharge;
+            alert(`Recharge successful. Your new balance is ${balance}`);
+          }
+          break;
+        case 4:
+          alert("Thank you for using POLARIS ATM.");
+          transaction = false;
+          break;
+        default:
+          alert("Invalid choice, Please try again.");
+          break;
+      }
+    }
+  </script>
+</html>
